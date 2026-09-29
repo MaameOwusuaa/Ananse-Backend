@@ -119,6 +119,10 @@ class LoginIn(BaseModel):
     password: str
 
 
+class GoogleLoginIn(BaseModel):
+    id_token: str = Field(min_length=1, max_length=8192)
+
+
 class VisitIn(BaseModel):
     slug: str
     source: str = "app"

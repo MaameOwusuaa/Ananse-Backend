@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     secret_key: str = "development-only-change-me"
     access_token_minutes: int = 10080
     algorithm: str = "HS256"
+    google_client_id: str = ""
 
     allowed_origins: str = (
         "http://localhost:5500,"
