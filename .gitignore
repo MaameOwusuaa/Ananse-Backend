@@ -1,0 +1,9 @@
+.ananse
+.env
+.env.*
+__pycacche__/
+*.py[cod]
+*.pyo
+.DS_Store
+.vscode/
+*.log

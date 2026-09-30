@@ -1,0 +1,544 @@
+{
+  "regions": [
+    "Greater Accra",
+    "Central",
+    "Ashanti",
+    "Volta",
+    "Savannah",
+    "Upper East",
+    "Western",
+    "Northern"
+  ],
+  "categories": [
+    "Forts and castles",
+    "Palaces and royal history",
+    "Natural heritage",
+    "Sacred places",
+    "Crafts and markets",
+    "Monuments"
+  ],
+  "sites": [
+    {
+      "slug": "cape-coast-castle",
+      "name": "Cape Coast Castle",
+      "region": "Central",
+      "category": "Forts and castles",
+      "latitude": 5.1053,
+      "longitude": -1.2416,
+      "summary": "A UNESCO World Heritage fort on the Central coast and one of Ghana's most visited places of remembrance.",
+      "history": [
+        "Cape Coast Castle grew from a small trading lodge built on the shore in the seventeenth century into the administrative centre of British trade on the Gold Coast. Successive European companies rebuilt and extended it, and by the eighteenth century it held both the governor's quarters and the dungeons below them.",
+        "For more than a century the castle was a holding place for enslaved people before they were forced onto ships crossing the Atlantic. The Door of No Return, cut through the sea-facing wall, is now the point where visitors pause longest.",
+        "Today the castle houses a museum on Ghanaian history and the transatlantic slave trade, run with the Ghana Museums and Monuments Board, and remains a site of return for people of African descent from across the world."
+      ],
+      "facts": {
+        "Built": "17th century, rebuilt several times",
+        "Status": "UNESCO World Heritage Site",
+        "Managed by": "Ghana Museums and Monuments Board",
+        "Best time to visit": "Early morning, before the coastal heat",
+        "Typical visit": "About 90 minutes with a guide"
+      },
+      "accessibility": [
+        "Ground-floor courtyard and museum galleries are step-free.",
+        "The dungeons are reached by uneven stone ramps with low lighting.",
+        "Guided tours can be given at a slower pace on request.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Cape Coast-based heritage guide",
+      "journeyMinutes": 90,
+      "badge": "coastal-forts"
+    },
+    {
+      "slug": "elmina-castle",
+      "name": "Elmina Castle",
+      "region": "Central",
+      "category": "Forts and castles",
+      "latitude": 5.0847,
+      "longitude": -1.3489,
+      "summary": "The oldest European building still standing south of the Sahara, above the fishing harbour at Elmina.",
+      "history": [
+        "Portuguese traders built São Jorge da Mina in 1482 to protect their gold trade on this stretch of coast. The castle passed to the Dutch in 1637 and to the British in 1872, and each occupant rebuilt parts of it.",
+        "Like Cape Coast Castle, Elmina became a holding place in the transatlantic slave trade, and its courtyards, cells and chapel sit uncomfortably close together.",
+        "The castle looks out over a working harbour, so a visit today moves between the weight of the building's history and the noise of the fishing fleet below it."
+      ],
+      "facts": {
+        "Built": "1482 by Portuguese traders",
+        "Status": "UNESCO World Heritage Site",
+        "Managed by": "Ghana Museums and Monuments Board",
+        "Nearby": "Fort St. Jago, on the hill opposite",
+        "Typical visit": "About 75 minutes with a guide"
+      },
+      "accessibility": [
+        "The main courtyard is reached by a long ramp.",
+        "Upper floors are only reachable by stairs.",
+        "Seating is available in the courtyard between tour sections.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with an Elmina community historian",
+      "journeyMinutes": 75,
+      "badge": "coastal-forts"
+    },
+    {
+      "slug": "kakum-national-park",
+      "name": "Kakum National Park",
+      "region": "Central",
+      "category": "Natural heritage",
+      "latitude": 5.35,
+      "longitude": -1.3833,
+      "summary": "Protected rainforest north of Cape Coast, best known for a canopy walkway strung between giant trees.",
+      "history": [
+        "Kakum protects one of the last blocks of upland evergreen rainforest in southern Ghana. The land was first reserved for timber in the 1930s and became a national park in 1992, managed with the surrounding communities.",
+        "The canopy walkway, opened in 1995, is a series of rope bridges suspended about thirty metres above the forest floor. It was built to let visitors see the forest from the level where most of its life happens.",
+        "Forest elephants, bongo antelope, colobus monkeys and more than two hundred bird species have been recorded in the park, though the forest keeps most of them well hidden."
+      ],
+      "facts": {
+        "Protected since": "1992 as a national park",
+        "Area": "About 375 square kilometres",
+        "Signature experience": "Canopy walkway, seven bridges",
+        "Best time to visit": "Early morning for wildlife and birdsong",
+        "Typical visit": "Half a day"
+      },
+      "accessibility": [
+        "The visitor centre and forest floor trail are partly step-free.",
+        "The canopy walkway is reached by a steep uphill path and is not step-free.",
+        "Rest points with benches are spaced along the approach trail.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Kakum park guide",
+      "journeyMinutes": 120,
+      "badge": "forest-walker"
+    },
+    {
+      "slug": "manhyia-palace",
+      "name": "Manhyia Palace Museum",
+      "region": "Ashanti",
+      "category": "Palaces and royal history",
+      "latitude": 6.7,
+      "longitude": -1.6167,
+      "summary": "The former residence of the Asantehene in Kumasi, now a museum of Asante royal history.",
+      "history": [
+        "Manhyia Palace was built in 1925 for Asantehene Agyeman Prempeh I on his return from exile. It served as the royal residence until 1974, when a new palace was built in the grounds.",
+        "The old building was opened as a museum in 1995. Its rooms hold royal regalia, photographs, furniture and records that trace the Asante kingdom through the nineteenth and twentieth centuries.",
+        "The palace remains the centre of Asante ceremonial life, and Akwasidae celebrations still draw crowds to the grounds."
+      ],
+      "facts": {
+        "Built": "1925",
+        "Opened as a museum": "1995",
+        "Holds": "Royal regalia, photographs and archives",
+        "Nearby": "Kumasi Central Market, Prempeh II Jubilee Museum",
+        "Typical visit": "About an hour"
+      },
+      "accessibility": [
+        "The ground floor is step-free from the courtyard.",
+        "Upper rooms are reached by a staircase with a handrail.",
+        "Photography rules are explained at the entrance.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with the Manhyia Palace Museum team",
+      "journeyMinutes": 60,
+      "badge": "story-keeper"
+    },
+    {
+      "slug": "larabanga-mosque",
+      "name": "Larabanga Mosque",
+      "region": "Savannah",
+      "category": "Sacred places",
+      "latitude": 9.2167,
+      "longitude": -1.85,
+      "summary": "A whitewashed mud-and-stick mosque in the Savannah Region, one of the oldest in West Africa.",
+      "history": [
+        "The mosque at Larabanga is built in the Sudanese style found across the West African savannah: mud walls over a timber frame, with projecting buttresses and wooden stakes that double as scaffolding for repairs.",
+        "Local tradition dates its founding to the early seventeenth century. The building has been restored many times, because mud architecture depends on constant maintenance after each rainy season.",
+        "The village keeps an old handwritten Qur'an associated with the mosque, and the site sits close to the entrance road for Mole National Park."
+      ],
+      "facts": {
+        "Style": "Sudanese mud-and-stick architecture",
+        "Tradition dates it to": "The early 17th century",
+        "Maintained by": "The Larabanga community",
+        "Nearby": "Mole National Park, Mystic Stone",
+        "Typical visit": "About 45 minutes"
+      },
+      "accessibility": [
+        "The approach to the mosque is flat but unpaved.",
+        "The interior is open to worshippers; visitors view the exterior.",
+        "Shade is limited, so visits are easier early or late in the day.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Larabanga community elder",
+      "journeyMinutes": 45,
+      "badge": "northern-routes"
+    },
+    {
+      "slug": "wli-waterfalls",
+      "name": "Wli Waterfalls",
+      "region": "Volta",
+      "category": "Natural heritage",
+      "latitude": 7.1167,
+      "longitude": 0.59,
+      "summary": "The tallest waterfall in Ghana, at the edge of the Agumatsa Wildlife Sanctuary near Hohoe.",
+      "history": [
+        "Wli falls in two stages down the Agumatsa escarpment, close to the border with Togo. The lower fall is reached by a walking trail through the sanctuary, crossing the river on a series of small bridges.",
+        "The cliffs above the fall hold large colonies of fruit bats, which are easiest to see in the late afternoon.",
+        "The surrounding forest is protected as a community sanctuary, and entry fees support the villages that manage it."
+      ],
+      "facts": {
+        "Height": "Ghana's tallest waterfall",
+        "Trail to lower fall": "About 45 minutes each way",
+        "Managed by": "Agumatsa Wildlife Sanctuary and local communities",
+        "Best time to visit": "Wet season for volume, dry season for the trail",
+        "Typical visit": "Half a day"
+      },
+      "accessibility": [
+        "The trail to the lower fall is flat but crosses several narrow bridges.",
+        "The upper fall trail is steep and is not suitable for step-free access.",
+        "Benches and shade are available near the trailhead.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with an Agumatsa sanctuary guide",
+      "journeyMinutes": 150,
+      "badge": "forest-walker"
+    },
+    {
+      "slug": "nzulezu-stilt-village",
+      "name": "Nzulezu Stilt Village",
+      "region": "Western",
+      "category": "Natural heritage",
+      "latitude": 5.0167,
+      "longitude": -2.35,
+      "summary": "A village built entirely on stilts above Lake Tadane, reached by canoe through the Amansuri wetland.",
+      "history": [
+        "Nzulezu means 'surface of water'. The village is built on wooden platforms above Lake Tadane, with a single walkway running through it and homes, a school and a chapel set on either side.",
+        "Oral tradition traces the community's arrival to a migration from the ancient town of Walata, guided, the story says, by a snail.",
+        "Reaching the village takes about an hour by canoe through the Amansuri wetland, one of the largest intact swamp forests in Ghana."
+      ],
+      "facts": {
+        "Meaning of the name": "Surface of water",
+        "Getting there": "About an hour by canoe from Beyin",
+        "Setting": "Amansuri wetland, Western Region",
+        "Visitor etiquette": "Ask before photographing homes or people",
+        "Typical visit": "Half a day including the canoe trip"
+      },
+      "accessibility": [
+        "Access is by canoe only, with a step down into the boat.",
+        "The village walkway is flat but narrow, with no handrail in places.",
+        "Life jackets are provided at the departure point.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Beyin canoe guide",
+      "journeyMinutes": 180,
+      "badge": "story-keeper"
+    },
+    {
+      "slug": "independence-arch",
+      "name": "Independence Arch",
+      "region": "Greater Accra",
+      "category": "Monuments",
+      "latitude": 5.5484,
+      "longitude": -0.1919,
+      "summary": "The arch at Black Star Square in Accra, built to mark Ghana's independence in 1957.",
+      "history": [
+        "Independence Square, also called Black Star Square, was laid out in the late 1950s as the setting for national parades. The Independence Arch stands at one end, carrying the words 'Freedom and Justice, AD 1957'.",
+        "The Black Star Gate and the Eternal Flame of African Liberation stand nearby, lit by Kwame Nkrumah to mark the end of colonial rule.",
+        "The square is still where Ghana holds its Independence Day parade each 6 March, and it looks straight out to the Gulf of Guinea."
+      ],
+      "facts": {
+        "Marks": "Ghana's independence, 6 March 1957",
+        "Also known as": "Black Star Square",
+        "Nearby": "Kwame Nkrumah Memorial Park, Osu Castle",
+        "Best time to visit": "Late afternoon, when the sea breeze picks up",
+        "Typical visit": "About 30 minutes"
+      },
+      "accessibility": [
+        "The square is flat, paved and step-free throughout.",
+        "There is very little shade; bring water and a hat.",
+        "Parking is available on the northern side.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with an Accra city guide",
+      "journeyMinutes": 30,
+      "badge": "first-journey"
+    },
+    {
+      "slug": "paga-crocodile-pond",
+      "name": "Paga Crocodile Pond",
+      "region": "Upper East",
+      "category": "Sacred places",
+      "latitude": 10.9833,
+      "longitude": -1.1167,
+      "summary": "A sacred pond near the Burkina Faso border where crocodiles and the community live alongside each other.",
+      "history": [
+        "In Paga the crocodiles are treated as sacred. Local tradition holds that each crocodile is bound to the soul of a person in the community, so the animals are never harmed.",
+        "The pond has been a place of visit for generations, and guides from the community manage the encounters between visitors and the crocodiles.",
+        "Paga also holds the Pikworo Slave Camp, a nearby site that records the movement of enslaved people through the north in the eighteenth and nineteenth centuries."
+      ],
+      "facts": {
+        "Tradition": "Crocodiles are regarded as sacred and are never harmed",
+        "Region": "Upper East, close to the Burkina Faso border",
+        "Nearby": "Pikworo Slave Camp, Paga Chief's Palace",
+        "Best time to visit": "Morning, when the pond is calmest",
+        "Typical visit": "About an hour"
+      },
+      "accessibility": [
+        "The path to the pond edge is flat but sandy.",
+        "Viewing points are on open ground with little shade.",
+        "Guides accompany every visit to the water's edge.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Paga community guide",
+      "journeyMinutes": 60,
+      "badge": "northern-routes"
+    },
+    {
+      "slug": "mole-national-park",
+      "name": "Mole National Park",
+      "region": "Savannah",
+      "category": "Natural heritage",
+      "latitude": 9.7,
+      "longitude": -1.85,
+      "summary": "Ghana's largest national park, where elephants gather at the waterholes below the escarpment.",
+      "history": [
+        "Mole covers a wide stretch of Guinea savannah in the Savannah Region and became a national park in 1971. Its landscape is open woodland cut by seasonal rivers.",
+        "Elephants, buffalo, warthogs, baboons and several antelope species live in the park, and the waterholes below the escarpment draw them into view in the dry season.",
+        "Walking safaris with armed rangers are one of the few places in West Africa where visitors approach elephants on foot."
+      ],
+      "facts": {
+        "Established": "1971",
+        "Area": "About 4,800 square kilometres",
+        "Known for": "Elephants, walking safaris, savannah birdlife",
+        "Best time to visit": "Dry season, when animals gather at waterholes",
+        "Typical visit": "One to two days"
+      },
+      "accessibility": [
+        "The visitor area and viewing platform are step-free.",
+        "Walking safaris cross uneven ground and are not step-free.",
+        "Vehicle safaris are an alternative for visitors with limited mobility.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Mole park ranger",
+      "journeyMinutes": 240,
+      "badge": "northern-routes"
+    },
+    {
+      "slug": "bonwire-kente-village",
+      "name": "Bonwire Kente Village",
+      "region": "Ashanti",
+      "category": "Crafts and markets",
+      "latitude": 6.8333,
+      "longitude": -1.45,
+      "summary": "The Ashanti town most closely associated with kente weaving, where narrow-strip looms line the roadside.",
+      "history": [
+        "Bonwire is widely regarded as the home of Asante kente. Weavers here work narrow-strip looms, producing bands that are then sewn edge to edge into a full cloth.",
+        "Patterns carry names and meanings, and particular designs have historically been reserved for royalty. A single cloth can take weeks of work.",
+        "Visitors can watch weaving in progress, try the loom under guidance, and buy directly from the weavers."
+      ],
+      "facts": {
+        "Known for": "Narrow-strip kente weaving",
+        "How cloth is made": "Woven in bands, then sewn together",
+        "Nearby": "Adanwomase, Ntonso adinkra village",
+        "Visitor etiquette": "Ask before photographing a weaver at work",
+        "Typical visit": "About an hour"
+      },
+      "accessibility": [
+        "Weaving sheds are at ground level and mostly step-free.",
+        "Ground between sheds is uneven in places.",
+        "Demonstrations can be given seated.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Bonwire master weaver",
+      "journeyMinutes": 60,
+      "badge": "story-keeper"
+    },
+    {
+      "slug": "salaga-market",
+      "name": "Salaga Historic Market",
+      "region": "Northern",
+      "category": "Crafts and markets",
+      "latitude": 8.55,
+      "longitude": -0.5167,
+      "summary": "A northern market town that sat on major trans-Saharan trade routes, and a site of painful history.",
+      "history": [
+        "Salaga grew as a commercial town on routes linking the forest south with the Sahel. Kola nuts, salt, cloth and livestock moved through its markets.",
+        "The town was also a centre of the trade in enslaved people in the nineteenth century, and wells associated with that trade remain in the town.",
+        "Salaga's history is presented locally with care, and visits are best made with a guide from the community who can explain what each site meant."
+      ],
+      "facts": {
+        "Grew as": "A trading town on trans-Saharan routes",
+        "Traded": "Kola, salt, cloth, livestock",
+        "Difficult history": "A centre of the nineteenth-century slave trade",
+        "Visit with": "A community guide, arranged in town",
+        "Typical visit": "About two hours"
+      },
+      "accessibility": [
+        "Market ground is flat but busy and uneven underfoot.",
+        "Shade is limited during the middle of the day.",
+        "Quieter visiting times can be arranged with a guide.",
+        "Audio narration of the site story is available in the app."
+      ],
+      "reviewer": "Reviewed with a Salaga local historian",
+      "journeyMinutes": 120,
+      "badge": "northern-routes"
+    }
+  ],
+  "stories": {
+    "cape-coast-castle": {
+      "title": "The Door and the Sea",
+      "site": "cape-coast-castle",
+      "minutes": 6,
+      "chapters": [
+        {
+          "heading": "A lodge becomes a castle",
+          "body": "The first structure on this shore was a small trading lodge. Over a century it was rebuilt, extended and fortified by one European company after another, until the whitewashed walls you see today enclosed a governor's residence, a garrison and the dungeons beneath.",
+          "question": {
+            "prompt": "What stood on this site before the castle?",
+            "options": [
+              "A fishing village hall",
+              "A small trading lodge",
+              "A royal palace"
+            ],
+            "answer": 1,
+            "explanation": "It began as a modest lodge for coastal trade, and was rebuilt many times before it became the castle."
+          }
+        },
+        {
+          "heading": "Below the courtyard",
+          "body": "Under the bright courtyard are the dungeons. Hundreds of people were held in each chamber, with a single narrow opening for air. Guides ask visitors to stand in the dark for a moment before they speak, because the room says more than any description.",
+          "question": null
+        },
+        {
+          "heading": "The Door of No Return",
+          "body": "A low doorway cut through the sea-facing wall led directly to the waiting boats. People taken through it did not come back. In 1998 the remains of two people of African descent were carried back through the same door, and a sign on the far side now reads 'Door of Return'.",
+          "question": {
+            "prompt": "Why is the far side of the door now marked 'Door of Return'?",
+            "options": [
+              "It marks the entrance used by traders",
+              "It marks the return of people of African descent to the castle",
+              "It marks the rebuilding of the castle"
+            ],
+            "answer": 1,
+            "explanation": "The renaming honours the return of descendants of those who were taken through it."
+          }
+        },
+        {
+          "heading": "A place of remembrance",
+          "body": "The castle now holds a museum run with the Ghana Museums and Monuments Board. School groups, families and visitors from across the diaspora come here, and the work of remembering is treated as part of the site's purpose, not an addition to it.",
+          "question": null
+        }
+      ]
+    },
+    "larabanga-mosque": {
+      "title": "Mud, Timber and Time",
+      "site": "larabanga-mosque",
+      "minutes": 5,
+      "chapters": [
+        {
+          "heading": "Built from the ground it stands on",
+          "body": "The mosque is made of the same earth as the land around it, packed over a timber frame. The wooden stakes that bristle from the walls are not decoration: they are the scaffolding used each time the building is re-plastered.",
+          "question": {
+            "prompt": "What are the wooden stakes in the walls for?",
+            "options": [
+              "They hold up the roof",
+              "They are scaffolding for repairs",
+              "They mark the direction of prayer"
+            ],
+            "answer": 1,
+            "explanation": "Builders climb them to re-plaster the walls after the rains, which is how the mosque has survived."
+          }
+        },
+        {
+          "heading": "A building that is never finished",
+          "body": "Mud architecture depends on maintenance. Every rainy season takes a little of the surface away, and every dry season the community puts it back. The mosque is old because it has been repaired continuously, not because it was left alone.",
+          "question": null
+        },
+        {
+          "heading": "The village and the visitor",
+          "body": "Larabanga sits on the road to Mole National Park, so many visitors arrive on their way somewhere else. The community asks that photographs are taken from outside, and that prayer times are respected.",
+          "question": {
+            "prompt": "What does the community ask of visitors?",
+            "options": [
+              "To photograph freely inside during prayer",
+              "To view from outside and respect prayer times",
+              "To bring building materials"
+            ],
+            "answer": 1,
+            "explanation": "Visiting respectfully is part of how the site is cared for."
+          }
+        }
+      ]
+    },
+    "nzulezu-stilt-village": {
+      "title": "Surface of Water",
+      "site": "nzulezu-stilt-village",
+      "minutes": 5,
+      "chapters": [
+        {
+          "heading": "An hour by canoe",
+          "body": "There is no road to Nzulezu. You leave from Beyin and paddle through the Amansuri wetland, past raffia palms and open water, until a line of wooden roofs appears on the lake.",
+          "question": null
+        },
+        {
+          "heading": "A street made of planks",
+          "body": "The village is arranged along one central walkway with homes on either side, a school at one end and a chapel at the other. Everything, including the ground you stand on, rests on wooden stilts driven into the lake bed.",
+          "question": {
+            "prompt": "What does the name Nzulezu mean?",
+            "options": [
+              "Surface of water",
+              "House of palms",
+              "Village of the snail"
+            ],
+            "answer": 0,
+            "explanation": "Nzulezu means 'surface of water', which describes the village exactly."
+          }
+        },
+        {
+          "heading": "Living with the lake",
+          "body": "Life here follows the water: fishing, farming on the shore, and constant repair of the platforms. Visitors are asked to stay on the walkway and to ask before photographing homes or people.",
+          "question": null
+        }
+      ]
+    }
+  },
+  "badges": [
+    {
+      "slug": "first-journey",
+      "name": "First Journey",
+      "requirement": "Complete your first heritage story",
+      "threshold": 1,
+      "rule": "stories"
+    },
+    {
+      "slug": "coastal-forts",
+      "name": "Coastal Forts",
+      "requirement": "Visit two forts or castles on the coast",
+      "threshold": 2,
+      "rule": "category:Forts and castles"
+    },
+    {
+      "slug": "forest-walker",
+      "name": "Forest Walker",
+      "requirement": "Visit two natural heritage sites",
+      "threshold": 2,
+      "rule": "category:Natural heritage"
+    },
+    {
+      "slug": "northern-routes",
+      "name": "Northern Routes",
+      "requirement": "Visit three sites in the north",
+      "threshold": 3,
+      "rule": "region:north"
+    },
+    {
+      "slug": "story-keeper",
+      "name": "Story Keeper",
+      "requirement": "Finish three heritage stories",
+      "threshold": 3,
+      "rule": "stories"
+    },
+    {
+      "slug": "passport-pioneer",
+      "name": "Passport Pioneer",
+      "requirement": "Record six site visits",
+      "threshold": 6,
+      "rule": "visits"
+    }
+  ]
+}
