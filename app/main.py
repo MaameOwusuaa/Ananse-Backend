@@ -46,4 +46,8 @@ def create_tables() -> None:
 
 @app.get("/api/health", tags=["health"])
 def health() -> dict[str, str]:
-    return {"status": "ok", "service": settings.app_name}
+    return {
+        "status": "ok",
+        "service": settings.app_name,
+        "database_host": settings.database_host,
+    }

@@ -4,6 +4,13 @@ from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+@property
+def database_host(self) -> str:
+    """Return the configured database host without exposing credentials."""
+    from urllib.parse import urlparse
+
+    parsed = urlparse(self.database_url)
+    return parsed.hostname or "no-host"
 
 class Settings(BaseSettings):
     """Every value can be overridden in .env."""
