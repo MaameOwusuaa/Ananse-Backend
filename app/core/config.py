@@ -29,7 +29,8 @@ class Settings(BaseSettings):
         "https://ananse-silk.vercel.app/,"
         "https://ananse-silk.vercel.app"    
     )
-    
+    gemini_api_key: str = ""
+    gemini_model: str = "gemini-2.5-flash"
     ollama_url: str = ""
     ollama_model: str = "llama3.2:1b"
     

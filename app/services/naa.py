@@ -145,62 +145,115 @@ The JSON must contain:
 """
 
 
-def ask(
-    question: str,
-    site_context: str,
-) -> dict:
-    """
-    Send the database context and visitor question to Ollama.
-    """
+def _parse(content: str) -> dict:
+    content = (content or "").strip()
+    if content.startswith("```"):
+        content = content.strip("`")
+        content = content[content.find("{"):]
+    if not content:
+        raise RuntimeError("The model returned an empty response.")
+    try:
+        return json.loads(content)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("The model returned invalid JSON.") from exc
 
-    system_instruction = build_system_instruction(site_context)
 
+def _ask_gemini(question: str, system_instruction: str) -> dict:
+    """Hosted model (free tier available) - works on Render."""
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client(api_key=settings.gemini_api_key)
+    response = client.models.generate_content(
+        model=settings.gemini_model,
+        contents=question,
+        config=types.GenerateContentConfig(
+            system_instruction=system_instruction,
+            response_mime_type="application/json",
+            response_json_schema=OLLAMA_RESPONSE_SCHEMA,
+            temperature=0.2,
+            max_output_tokens=1200,
+        ),
+    )
+    return _parse(response.text)
+
+
+def _ask_ollama(question: str, system_instruction: str) -> dict:
+    """Self-hosted Ollama - only works where an Ollama server is reachable."""
     payload = {
         "model": settings.ollama_model,
         "messages": [
-            {
-                "role": "system",
-                "content": system_instruction,
-            },
-            {
-                "role": "user",
-                "content": question,
-            },
+            {"role": "system", "content": system_instruction},
+            {"role": "user", "content": question},
         ],
         "stream": False,
         "format": OLLAMA_RESPONSE_SCHEMA,
-        "options": {
-            "temperature": 0.2,
-            "num_predict": 500,
-        },
+        "options": {"temperature": 0.2, "num_predict": 500},
     }
-
     try:
         response = httpx.post(
-            f"{settings.ollama_url}/api/chat",
+            f"{settings.ollama_url.rstrip('/')}/api/chat",
             json=payload,
-            timeout=120.0,
+            timeout=60.0,
         )
-
         response.raise_for_status()
-
     except httpx.HTTPError as exc:
-        raise RuntimeError(
-            f"Could not connect to Ollama: {exc}"
-        ) from exc
+        raise RuntimeError(f"Could not connect to Ollama: {exc}") from exc
 
-    data = response.json()
+    return _parse(response.json().get("message", {}).get("content", ""))
 
-    message = data.get("message", {})
-    content = message.get("content", "")
 
-    if not content:
-        raise RuntimeError("Ollama returned an empty response.")
+def answer_from_database(question: str, sites: list[Site]) -> dict:
+    """No-AI fallback: answer straight from the reviewed database content,
+    so Naa always replies even if the AI provider is down or not configured."""
+    words = {w.strip("?.,!").lower() for w in question.split() if len(w) > 3}
+    matches = [
+        s for s in sites
+        if any(w in f"{s.name} {s.region} {s.category}".lower() for w in words)
+    ] or sites[:3]
 
-    try:
-        return json.loads(content)
+    if not matches:
+        return {
+            "title": "ANANSE Heritage Guide",
+            "introduction": "That information is not currently available in ANANSE.",
+            "sections": [], "visitor_notes": [], "sources": [],
+        }
 
-    except json.JSONDecodeError as exc:
-        raise RuntimeError(
-            "Ollama returned invalid JSON."
-        ) from exc
+    sections = []
+    for s in matches[:3]:
+        content = s.summary or "No summary is available yet."
+        if s.journey_minutes:
+            content += f" Typical journey time: {s.journey_minutes} minutes."
+        sections.append({"heading": f"{s.name} ({s.region})", "content": content})
+
+    return {
+        "title": matches[0].name if len(matches) == 1 else "ANANSE Heritage Guide",
+        "introduction": "Here is what ANANSE's reviewed heritage records say.",
+        "sections": sections,
+        "visitor_notes": [],
+        "sources": [],
+    }
+
+
+def ask(question: str, site_context: str) -> dict:
+    """Send the database context and visitor question to the configured model.
+
+    Provider order: Gemini (if GEMINI_API_KEY is set), then Ollama
+    (if OLLAMA_URL is set). Raises RuntimeError if none is available.
+    """
+    system_instruction = build_system_instruction(site_context)
+    errors = []
+
+    if settings.gemini_api_key:
+        try:
+            return _ask_gemini(question, system_instruction)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"Gemini: {exc}")
+
+    if settings.ollama_url:
+        try:
+            return _ask_ollama(question, system_instruction)
+        except Exception as exc:  # noqa: BLE001
+            errors.append(f"Ollama: {exc}")
+
+    raise RuntimeError("; ".join(errors) or "No AI provider is configured.")
