@@ -2,15 +2,13 @@
 
 from functools import lru_cache
 
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
+
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-@property
-def database_host(self) -> str:
-    """Return the configured database host without exposing credentials."""
-    from urllib.parse import urlparse
+_UNSUPPORTED_URL_OPTIONS = {"ssl-mode", "ssl_mode", "sslmode"}
 
-    parsed = urlparse(self.database_url)
-    return parsed.hostname or "no-host"
 
 class Settings(BaseSettings):
     """Every value can be overridden in .env."""
@@ -32,9 +30,9 @@ class Settings(BaseSettings):
         "http://localhost:8080"
     )
     
-    ollama_url: str = "http://127.0.0.1:11434"
+    ollama_url: str = ""
     ollama_model: str = "llama3.2:1b"
-    tavily_api_key: str = "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"
+    
     
     model_config = SettingsConfigDict(
         env_file=".env",
@@ -49,6 +47,16 @@ class Settings(BaseSettings):
             if origin.strip()
         ]
 
+    @property
+    def database_host(self) -> str:
+        """Return the configured database host without exposing credentials."""
+        from urllib.parse import urlparse
+
+        parsed = urlparse(self.database_url)
+        return parsed.hostname or "no-host"
+
+
+    
 
 @lru_cache
 def get_settings() -> Settings:

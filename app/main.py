@@ -10,12 +10,16 @@ Interactive documentation is then at http://127.0.0.1:8000/docs
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app import models  
+from app import models
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.routers import auth, badges, naa, passport, sites, stories
 
 
+print("ANANSE: application import started", flush=True)
+
+
+print("ANANSE: creating FastAPI application", flush=True)
 
 app = FastAPI(
     title=settings.app_name,
@@ -34,14 +38,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-for router in (auth.router, sites.router, stories.router, naa.router, passport.router, badges.router):
-    app.include_router(router, prefix=settings.api_prefix)
+
+for router in (
+    auth.router,
+    sites.router,
+    stories.router,
+    naa.router,
+    passport.router,
+    badges.router,
+):
+    app.include_router(
+        router,
+        prefix=settings.api_prefix,
+    )
 
 
 @app.on_event("startup")
 def create_tables() -> None:
     """Create any missing tables. Use Alembic once the schema starts moving."""
+    print("ANANSE: startup event reached", flush=True)
+    print("ANANSE: attempting database connection", flush=True)
+
     Base.metadata.create_all(bind=engine)
+
+    print("ANANSE: database connection successful", flush=True)
 
 
 @app.get("/api/health", tags=["health"])
@@ -51,3 +71,4 @@ def health() -> dict[str, str]:
         "service": settings.app_name,
         "database_host": settings.database_host,
     }
+

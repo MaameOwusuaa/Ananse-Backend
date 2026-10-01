@@ -1,7 +1,7 @@
 .ananse
 .env
 .env.*
-__pycacche__/
+__pycache__/
 *.py[cod]
 *.pyo
 .DS_Store
