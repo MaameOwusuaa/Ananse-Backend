@@ -15,7 +15,7 @@ from app.core.config import settings
 from app.core.database import Base, engine
 from app.routers import auth, badges, naa, passport, sites, stories
 
-Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(
     title=settings.app_name,
