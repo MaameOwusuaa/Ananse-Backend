@@ -55,14 +55,8 @@ for router in (
 
 @app.on_event("startup")
 def create_tables() -> None:
-    """Create any missing tables. Use Alembic once the schema starts moving."""
+    """Database tables will be managed separately."""
     print("ANANSE: startup event reached", flush=True)
-    print("ANANSE: attempting database connection", flush=True)
-
-    Base.metadata.create_all(bind=engine)
-
-    print("ANANSE: database connection successful", flush=True)
-
 
 @app.get("/api/health", tags=["health"])
 def health() -> dict[str, str]:
