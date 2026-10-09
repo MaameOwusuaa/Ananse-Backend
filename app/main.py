@@ -59,10 +59,26 @@ def create_tables() -> None:
     print("ANANSE: startup event reached", flush=True)
 
 @app.get("/api/health", tags=["health"])
-def health() -> dict[str, str]:
+def health() -> dict:
+    """Quick check, safe to share: no passwords are returned."""
+    from sqlalchemy import text
+
+    from app.core.database import DATABASE_URL
+
+    db_status = "ok"
+    try:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+    except Exception as exc:  # noqa: BLE001
+        db_status = f"error: {type(exc).__name__}: {str(exc)[:200]}"
+
     return {
         "status": "ok",
         "service": settings.app_name,
+        "build": "2026-10-09-dbfix",
         "database_host": settings.database_host,
+        "database_driver": DATABASE_URL.drivername,
+        "database_name": DATABASE_URL.database,
+        "database_url_options": sorted(DATABASE_URL.query.keys()),
+        "database": db_status,
     }
-
