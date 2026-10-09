@@ -40,6 +40,22 @@ class Settings(BaseSettings):
         extra="ignore"
     )
 
+    @field_validator("database_url")
+    @classmethod
+    def _drop_unsupported_url_options(cls, value: str) -> str:
+        """Aiven's copied URI ends with ?ssl-mode=REQUIRED, which
+        mysql-connector rejects ("Unsupported argument 'ssl-mode'").
+        Strip it; mysql-connector still uses SSL with Aiven by default."""
+        value = value.strip().strip('"').strip("'")
+        parsed = urlparse(value)
+        if not parsed.query:
+            return value
+        kept = [
+            (k, v) for k, v in parse_qsl(parsed.query, keep_blank_values=True)
+            if k.lower() not in _UNSUPPORTED_URL_OPTIONS
+        ]
+        return urlunparse(parsed._replace(query=urlencode(kept)))
+
     @property
     def origins(self) -> list[str]:
         return [
