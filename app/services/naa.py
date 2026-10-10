@@ -158,6 +158,14 @@ def _parse(content: str) -> dict:
         raise RuntimeError("The model returned invalid JSON.") from exc
 
 
+def _thinking_config(types):
+    """Keep Naa fast: 2.x models take thinking_budget (0 = off); newer
+    models (3.x) take thinking_level instead and reject thinking_budget."""
+    if settings.gemini_model.startswith("gemini-2"):
+        return types.ThinkingConfig(thinking_budget=0)
+    return types.ThinkingConfig(thinking_level="low")
+
+
 def _ask_gemini(question: str, system_instruction: str) -> dict:
     """Hosted model (free tier available) - works on Render."""
     from google import genai
@@ -172,10 +180,9 @@ def _ask_gemini(question: str, system_instruction: str) -> dict:
             response_mime_type="application/json",
             response_json_schema=OLLAMA_RESPONSE_SCHEMA,
             temperature=0.2,
-            max_output_tokens=2048,
-            # 2.5 models "think" by default and those tokens count against
-            # max_output_tokens, which can cut the JSON reply short.
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
+            # Thinking tokens count against this limit, so leave room.
+            max_output_tokens=4096,
+            thinking_config=_thinking_config(types),
         ),
     )
     return _parse(response.text)
