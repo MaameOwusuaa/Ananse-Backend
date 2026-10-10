@@ -172,7 +172,10 @@ def _ask_gemini(question: str, system_instruction: str) -> dict:
             response_mime_type="application/json",
             response_json_schema=OLLAMA_RESPONSE_SCHEMA,
             temperature=0.2,
-            max_output_tokens=1200,
+            max_output_tokens=2048,
+            # 2.5 models "think" by default and those tokens count against
+            # max_output_tokens, which can cut the JSON reply short.
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
         ),
     )
     return _parse(response.text)
@@ -257,3 +260,23 @@ def ask(question: str, site_context: str) -> dict:
             errors.append(f"Ollama: {exc}")
 
     raise RuntimeError("; ".join(errors) or "No AI provider is configured.")
+
+
+def provider_status() -> dict:
+    """Try a tiny request to each configured provider and report the result
+    (no keys or secrets are returned). Used by GET /api/naa/status."""
+    status = {
+        "gemini_key_set": bool(settings.gemini_api_key),
+        "gemini_model": settings.gemini_model,
+        "ollama_url_set": bool(settings.ollama_url),
+    }
+    if settings.gemini_api_key:
+        try:
+            result = _ask_gemini(
+                "Say hello to a visitor in one short sentence.",
+                build_system_instruction("No heritage site data is needed for this test."),
+            )
+            status["gemini"] = "ok: " + str(result.get("introduction", ""))[:120]
+        except Exception as exc:  # noqa: BLE001
+            status["gemini"] = f"error: {type(exc).__name__}: {str(exc)[:300]}"
+    return status

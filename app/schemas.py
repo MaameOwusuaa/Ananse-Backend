@@ -52,9 +52,9 @@ class SiteOut(BaseModel):
     latitude: float
     longitude: float
     summary: str
-    history: dict[str, str] = {}
-    facts: list[str] = []
-    accessibility: dict[str, str] = {}
+    history: list[str] = Field(default_factory=list)
+    facts: dict[str, str] = Field(default_factory=dict)
+    accessibility: list[str] = Field(default_factory=list)
     reviewer: str = ""
     journey_minutes: int = Field(default=60, serialization_alias="journeyMinutes")
     badge_slug: str = Field(default="", serialization_alias="badge")

@@ -65,3 +65,9 @@ def ask(payload: NaaIn, db: Session = Depends(get_db)) -> NaaOut:
     except Exception:  # model returned the wrong shape
         return NaaOut(title="ANANSE Heritage Guide",
                       introduction=str(result.get("introduction", "")))
+
+
+@router.get("/status")
+def status() -> dict:
+    """Is Naa's AI provider working? Safe to share: no keys are returned."""
+    return naa_service.provider_status()
