@@ -36,7 +36,11 @@ def register(payload: RegisterIn, db: Session = Depends(get_db)) -> TokenOut:
     db.commit()
     db.refresh(user)
 
-    return TokenOut(access_token=create_access_token(user.email), user=UserOut.model_validate(user))
+    return TokenOut(
+        access_token=create_access_token(user.email),
+        expires_in=settings.access_token_minutes * 60,
+        user=UserOut.model_validate(user),
+    )
 
 
 @router.post("/login", response_model=TokenOut)
@@ -48,7 +52,11 @@ def login(payload: LoginIn, db: Session = Depends(get_db)) -> TokenOut:
             detail="That email and password do not match an account",
         )
 
-    return TokenOut(access_token=create_access_token(user.email), user=UserOut.model_validate(user))
+    return TokenOut(
+        access_token=create_access_token(user.email),
+        expires_in=settings.access_token_minutes * 60,
+        user=UserOut.model_validate(user),
+    )
 
 
 @router.post("/google", response_model=TokenOut)
@@ -92,7 +100,21 @@ def google_login(payload: GoogleLoginIn, db: Session = Depends(get_db)) -> Token
         db.commit()
         db.refresh(user)
 
-    return TokenOut(access_token=create_access_token(user.email), user=UserOut.model_validate(user))
+    return TokenOut(
+        access_token=create_access_token(user.email),
+        expires_in=settings.access_token_minutes * 60,
+        user=UserOut.model_validate(user),
+    )
+
+
+@router.post("/refresh", response_model=TokenOut)
+def refresh(user: User = Depends(current_user)) -> TokenOut:
+    """Issue a new 20-minute token after verified user activity."""
+    return TokenOut(
+        access_token=create_access_token(user.email),
+        expires_in=settings.access_token_minutes * 60,
+        user=UserOut.model_validate(user),
+    )
 
 
 @router.get("/me", response_model=UserOut)

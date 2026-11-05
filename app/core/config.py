@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     database_url: str = "sqlite:///./ananse.db"
 
     secret_key: str = ""
-    access_token_minutes: int = 10080
+    access_token_minutes: int = 20
     algorithm: str = "HS256"
     google_client_id: str = ""
 
