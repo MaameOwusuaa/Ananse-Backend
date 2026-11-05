@@ -75,6 +75,7 @@ def health() -> dict:
     return {
         "status": "ok",
         "service": settings.app_name,
+        "google_sign_in_configured": bool(settings.google_client_id),
         "build": "2026-10-09-dbfix",
         "database_host": settings.database_host,
         "database_driver": DATABASE_URL.drivername,
