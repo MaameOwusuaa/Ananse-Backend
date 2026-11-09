@@ -109,7 +109,7 @@ def google_login(payload: GoogleLoginIn, db: Session = Depends(get_db)) -> Token
 
 @router.post("/refresh", response_model=TokenOut)
 def refresh(user: User = Depends(current_user)) -> TokenOut:
-    """Issue a new 20-minute token after verified user activity."""
+    """Issue a fresh access token for a currently authenticated session."""
     return TokenOut(
         access_token=create_access_token(user.email),
         expires_in=settings.access_token_minutes * 60,

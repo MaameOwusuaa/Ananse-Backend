@@ -11,7 +11,7 @@ from app.core.security import MAX_PASSWORD_BYTES, hash_password
 from app.models import User
 
 
-def provision_admin() -> None:
+def provision_admin(*, create_tables: bool = True) -> None:
     email = settings.admin_email.strip().lower()
     password = settings.admin_password
     name = settings.admin_name.strip() or "Administrator"
@@ -23,7 +23,8 @@ def provision_admin() -> None:
     if len(name) > 120:
         raise SystemExit("ADMIN_NAME must be 120 characters or fewer.")
 
-    Base.metadata.create_all(bind=engine)
+    if create_tables:
+        Base.metadata.create_all(bind=engine)
     db = SessionLocal()
     try:
         user = db.query(User).filter(func.lower(User.email) == email).first()

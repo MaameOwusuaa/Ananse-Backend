@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import models
 from app.core.config import settings
 from app.core.database import Base, engine
+from app.provision_admin import provision_admin
 from app.routers import analytics, auth, badges, naa, passport, sites, stories
 
 
@@ -59,6 +60,22 @@ for router in (
 def create_tables() -> None:
     """Database tables will be managed separately."""
     print("ANANSE: startup event reached", flush=True)
+    # Provision only when both deployment secrets are configured. This lets a
+    # hosted deployment create or update its admin in the same database used
+    # by sign-in, without requiring a separate shell command.
+    has_admin_email = bool(settings.admin_email.strip())
+    has_admin_password = bool(settings.admin_password)
+    if has_admin_email != has_admin_password:
+        raise RuntimeError(
+            "Configure both ADMIN_EMAIL and ADMIN_PASSWORD to provision the administrator."
+        )
+    if has_admin_email:
+        provision_admin(create_tables=False)
+    else:
+        print(
+            "ANANSE: admin provisioning skipped; configure ADMIN_EMAIL and ADMIN_PASSWORD.",
+            flush=True,
+        )
 
 @app.get("/api/health", tags=["health"])
 def health() -> dict:
