@@ -4,7 +4,8 @@ Field names are camelCase on the way out so the frontend can use one set of
 property names everywhere.
 """
 
-from datetime import datetime
+from datetime import date, datetime
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, field_validator
 
@@ -133,6 +134,56 @@ class VisitOut(BaseModel):
     slug: str
     source: str
     recorded_at: datetime
+
+
+class AnalyticsEventIn(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
+    event_type: Literal[
+        "page_view",
+        "site_view",
+        "story_view",
+        "story_complete",
+        "search",
+    ] = Field(alias="eventType")
+    page: str = Field(
+        min_length=1,
+        max_length=240,
+        pattern=r"^/[A-Za-z0-9/_-]*$",
+    )
+    site_slug: str | None = Field(
+        default=None,
+        alias="siteSlug",
+        max_length=80,
+        pattern=r"^[a-z0-9]+(?:-[a-z0-9]+)*$",
+    )
+
+
+class AnalyticsEventOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+    id: int
+    event_type: str = Field(serialization_alias="eventType")
+    created_at: datetime = Field(serialization_alias="createdAt")
+
+
+class AnalyticsDailyCount(BaseModel):
+    day: date
+    count: int
+
+
+class AnalyticsSiteCount(BaseModel):
+    site_slug: str = Field(serialization_alias="siteSlug")
+    count: int
+
+
+class AnalyticsSummaryOut(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
+    total_events: int = Field(serialization_alias="totalEvents")
+    events_by_type: dict[str, int] = Field(serialization_alias="eventsByType")
+    daily_events: list[AnalyticsDailyCount] = Field(serialization_alias="dailyEvents")
+    top_sites: list[AnalyticsSiteCount] = Field(serialization_alias="topSites")
 
 
 class StoryProgressIn(BaseModel):

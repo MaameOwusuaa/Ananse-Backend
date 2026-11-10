@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import models
 from app.core.config import settings
 from app.core.database import Base, engine
-from app.routers import auth, badges, naa, passport, sites, stories
+from app.routers import analytics, auth, badges, naa, passport, sites, stories
 
 
 print("ANANSE: application import started", flush=True)
@@ -32,7 +32,8 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.origins or ["*"],
+    allow_origins=settings.origins,
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -40,6 +41,7 @@ app.add_middleware(
 
 
 for router in (
+    analytics.router,
     auth.router,
     sites.router,
     stories.router,

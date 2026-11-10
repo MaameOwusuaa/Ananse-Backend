@@ -8,6 +8,9 @@ from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+DEPLOYED_ORIGIN = "https://ananse-silk.vercel.app"
+
+
 
 class Settings(BaseSettings):
     """Every value can be overridden in .env."""
@@ -25,8 +28,7 @@ class Settings(BaseSettings):
     allowed_origins: str = (
         "http://localhost:5500,"
         "http://127.0.0.1:5500,"
-        "https://ananse-silk.vercel.app/,"
-        "https://ananse-silk.vercel.app"    
+        "https://ananse-silk.vercel.app"
     )
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
@@ -41,11 +43,12 @@ class Settings(BaseSettings):
 
     @property
     def origins(self) -> list[str]:
-        return [
-            origin.strip()
+        configured = [
+            origin.strip().rstrip("/")
             for origin in self.allowed_origins.split(",")
             if origin.strip()
         ]
+        return list(dict.fromkeys([*configured, DEPLOYED_ORIGIN]))
 
     @property
     def database_host(self) -> str:

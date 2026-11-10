@@ -95,6 +95,18 @@ class Visit(Base):
     site: Mapped[Site] = relationship()
 
 
+class AnalyticsEvent(Base):
+    __tablename__ = "analytics_events"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    event_type: Mapped[str] = mapped_column(String(40), index=True, nullable=False)
+    page: Mapped[str] = mapped_column(String(240), nullable=False)
+    site_slug: Mapped[str | None] = mapped_column(String(80), index=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime, server_default=func.now(), index=True
+    )
+
+
 class StoryCompletion(Base):
     __tablename__ = "story_completions"
     __table_args__ = (UniqueConstraint("user_id", "story_id", name="uq_completion_user_story"),)
