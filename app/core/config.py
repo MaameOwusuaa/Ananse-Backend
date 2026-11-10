@@ -25,6 +25,11 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     google_client_id: str = ""
 
+    # Set only when running `python -m app.provision_admin`.
+    admin_email: str = ""
+    admin_password: str = ""
+    admin_name: str = "Administrator"
+
     allowed_origins: str = (
         "http://localhost:5500,"
         "http://127.0.0.1:5500,"
