@@ -14,7 +14,8 @@ from app import models
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.provision_admin import provision_admin
-from app.routers import analytics, auth, badges, naa, passport, sites, stories
+from app.routers import admin, analytics, auth, badges, naa, passport, plans, sites, stories
+from app.models import VisitPlan
 
 
 print("ANANSE: application import started", flush=True)
@@ -43,7 +44,9 @@ app.add_middleware(
 
 for router in (
     analytics.router,
+    admin.router,
     auth.router,
+    plans.router,
     sites.router,
     stories.router,
     naa.router,
@@ -58,8 +61,10 @@ for router in (
 
 @app.on_event("startup")
 def create_tables() -> None:
-    """Database tables will be managed separately."""
+    """Ensure app-managed tables exist; existing tables remain externally managed."""
     print("ANANSE: startup event reached", flush=True)
+    models.AnalyticsEvent.__table__.create(bind=engine, checkfirst=True)
+    VisitPlan.__table__.create(bind=engine, checkfirst=True)
     # Provision only when both deployment secrets are configured. This lets a
     # hosted deployment create or update its admin in the same database used
     # by sign-in, without requiring a separate shell command.

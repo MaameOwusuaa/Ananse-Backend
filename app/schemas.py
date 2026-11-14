@@ -186,6 +186,40 @@ class AnalyticsSummaryOut(BaseModel):
     top_sites: list[AnalyticsSiteCount] = Field(serialization_alias="topSites")
 
 
+class VisitPlanCreate(BaseModel):
+    site_slug: str = Field(min_length=2, max_length=80)
+    visit_date: date
+    visit_time: str = Field(pattern=r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+    visitors: Literal["1", "2", "3", "4", "5", "6+"]
+
+
+class VisitPlanOut(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
+    id: int
+    site_slug: str = Field(serialization_alias="siteSlug")
+    site_name: str = Field(serialization_alias="siteName")
+    user_name: str = Field(serialization_alias="userName")
+    user_email: EmailStr = Field(serialization_alias="userEmail")
+    visit_date: date = Field(serialization_alias="visitDate")
+    visit_time: str = Field(serialization_alias="visitTime")
+    visitors: str
+    saved_at: datetime = Field(serialization_alias="savedAt")
+
+
+class AdminUserOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True, populate_by_name=True)
+
+    id: int
+    full_name: str = Field(serialization_alias="fullName")
+    email: EmailStr
+    role: str
+    created_at: datetime = Field(serialization_alias="createdAt")
+    visit_count: int = Field(serialization_alias="visitCount")
+    story_count: int = Field(serialization_alias="storyCount")
+    plan_count: int = Field(serialization_alias="planCount")
+
+
 class StoryProgressIn(BaseModel):
     slug: str
     score: int = 0

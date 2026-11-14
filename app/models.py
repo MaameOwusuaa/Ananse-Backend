@@ -1,15 +1,17 @@
 """SQLAlchemy models — the MySQL schema behind ANANSE."""
 
-from datetime import datetime
+from datetime import date, datetime, time
 
 from sqlalchemy import (
     JSON,
+    Date,
     DateTime,
     Float,
     ForeignKey,
     Integer,
     String,
     Text,
+    Time,
     UniqueConstraint,
     func,
 )
@@ -68,6 +70,21 @@ class Story(Base):
     chapters: Mapped[list] = mapped_column(JSON, default=list)
 
     site: Mapped[Site] = relationship(back_populates="stories")
+
+
+class VisitPlan(Base):
+    __tablename__ = "visit_plans"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    site_id: Mapped[int] = mapped_column(ForeignKey("sites.id", ondelete="CASCADE"), index=True)
+    visit_date: Mapped[date] = mapped_column(Date, nullable=False)
+    visit_time: Mapped[time] = mapped_column(Time, nullable=False)
+    visitors: Mapped[str] = mapped_column(String(3), nullable=False)
+    saved_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now(), nullable=False)
+
+    user: Mapped[User] = relationship()
+    site: Mapped[Site] = relationship()
 
 
 class Badge(Base):
