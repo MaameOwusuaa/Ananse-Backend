@@ -32,7 +32,10 @@ def list_sites(
     if category:
         query = query.filter(Site.category == category)
 
-    return query.order_by(Site.name).all()
+    # Site rows include large JSON/text columns. On small hosted MySQL plans,
+    # sorting those full rows can exceed the server's sort buffer. Fetch the
+    # filtered rows without a database filesort, then keep the API's ordering.
+    return sorted(query.all(), key=lambda site: site.name.casefold())
 
 
 @router.get("/{slug}", response_model=SiteOut, response_model_by_alias=True)
